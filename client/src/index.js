@@ -7,7 +7,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import {
     persistStore,
-    persisReducer,
+    persistReducer,
     FLUSH,
     REHYDRATE,
     PAUSE,
