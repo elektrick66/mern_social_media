@@ -1,20 +1,41 @@
-import { Box, Typography, useTheme, useMediaQuery } from "@mui/material";
+import { Box, IconButton, Typography, useTheme, useMediaQuery } from "@mui/material";
 import Form from "./Form";
+
+import { DarkMode, LightMode } from "@mui/icons-material";
+import { setMode } from "state";
+import { useDispatch } from "react-redux";
 
 const LoginPage = () => {
   const theme = useTheme();
+
+  const dispatch = useDispatch();
+  const dark = theme.palette.neutral.dark;
+
+
   const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
   return (
     <Box>
       <Box
+        display="flex"
+        flexDirection="row"
+        justifyContent="space-between"
         width="100%"
         backgroundColor={theme.palette.background.alt}
         p="1rem 6%"
         textAlign="center"
       >
-        <Typography fontWeight="bold" fontSize="32px" color="primary">
+        <Box></Box>
+        <Typography alignSelf= "center" fontWeight="bold" fontSize="32px" color="primary">
           Sociopedia
         </Typography>
+
+        <IconButton onClick={()=> dispatch(setMode())}>
+          {theme.palette.mode === "dark" ? (
+            <DarkMode sx={{ fontsize: "25px" }} />
+          ) : (
+            <LightMode sx={{ color: dark, fontSize: "25px" }} />
+          )}
+        </IconButton>
       </Box>
 
       <Box
